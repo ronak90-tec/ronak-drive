@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Ronak Drive</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <i class="fas fa-cloud"></i>
+        <span>Ronak Drive - Admin</span>
+      </div>
+      <div class="nav-right">
+        <button id="darkModeBtn" class="theme-btn">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="logoutBtn" class="btn-logout">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Section -->
+  <div id="loginSection" class="login-container">
+    <div class="login-box">
+      <h1>🔐 Admin Login</h1>
+      <form id="loginForm">
+        <input type="password" id="passwordInput" placeholder="Enter admin password" required>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <p id="loginError" class="error-message"></p>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminDashboard" class="admin-dashboard" style="display:none;">
+    <main class="container">
+      <!-- Dashboard Stats -->
+      <section class="admin-stats">
+        <div class="stat-card">
+          <i class="fas fa-file-alt"></i>
+          <div>
+            <h3 id="dashTotalFiles">0</h3>
+            <p>Total Files</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-database"></i>
+          <div>
+            <h3 id="dashStorageUsed">0 MB</h3>
+            <p>Storage Used</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upload Section -->
+      <section class="upload-section">
+        <h2>📤 Upload File</h2>
+        <div class="upload-area" id="uploadArea">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Drag files here or click to upload</p>
+          <input type="file" id="fileInput" style="display:none;">
+        </div>
+        <div id="uploadProgress" class="upload-progress" style="display:none;">
+          <div class="progress-bar"></div>
+          <p id="progressText">Uploading...</p>
+        </div>
+        <div id="uploadStatus" class="message"></div>
+      </section>
+
+      <!-- Files Management -->
+      <section class="files-management">
+        <h2>📁 Manage Files</h2>
+        <div id="adminFilesList" class="admin-files-table">
+          <table>
+            <thead>
+              <tr>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>Upload Date</th>
+                <th>Users with Access</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="filesTableBody">
+              <tr>
+                <td colspan="5" class="text-center loading">
+                  <i class="fas fa-spinner fa-spin"></i> Loading files...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal for access management -->
+  <div id="accessModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Manage Access - <span id="accessModalFileName"></span></h2>
+      <div class="access-form">
+        <input type="text" id="userIdInput" placeholder="Enter User ID" class="form-input">
+        <button id="grantAccessBtn" class="btn btn-primary">Grant Access</button>
+      </div>
+      <h3>Users with Access:</h3>
+      <ul id="accessList" class="access-list">
+      </ul>
+    </div>
+  </div>
+
+  <!-- Rename Modal -->
+  <div id="renameModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Rename File</h2>
+      <input type="text" id="newFileName" placeholder="New file name" class="form-input">
+      <button id="confirmRenameBtn" class="btn btn-primary">Rename</button>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

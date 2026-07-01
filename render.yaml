@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ronak-drive
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: ADMIN_PASSWORD
+        value: ronak2326
+      - key: NODE_ENV
+        value: production
+    disk:
+      - name: uploads
+        mountPath: /opt/render/project/src/uploads
+        sizeGB: 10
